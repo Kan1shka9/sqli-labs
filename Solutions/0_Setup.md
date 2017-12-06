@@ -1,3 +1,5 @@
+#### 0. Setup
+
 ```sh
 cd /var/www/
 ls
