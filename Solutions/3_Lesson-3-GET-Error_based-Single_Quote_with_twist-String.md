@@ -1,4 +1,4 @@
-#### 3. Lesson 3
+#### 3. Lesson 3 - ``GET - Error based - Single Quote with twist - String``
 
 ```
 http://127.0.0.1/sqli-labs/Less-3/

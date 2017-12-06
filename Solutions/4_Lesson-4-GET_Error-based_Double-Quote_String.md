@@ -1,4 +1,4 @@
-#### 4. Lesson 4 - ``Error based - Double Quote - String``
+#### 4. Lesson 4 - ``GET - Error based - Double Quote - String``
 
 ```
 http://127.0.0.1/sqli-labs/Less-4/
@@ -29,6 +29,10 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 '   "1"   ") LIMIT 0,1   '
 '   "  1"   ") LIMIT 0,1   '
 1"
+```
+
+```sql
+select login_name, password from table where id=("our_input")
 ```
 
 ```
