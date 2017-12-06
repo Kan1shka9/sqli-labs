@@ -1,5 +1,7 @@
-README
-================
+#### README
+
+----
+
 SQLI-LABS is a platform to learn SQLI 
 Following labs are covered for GET and POST scenarios:
 
@@ -30,7 +32,8 @@ Following labs are covered for GET and POST scenarios:
 11. Stacked SQL injections.
 12. Secondary channel extraction
 
-========================================================================================
+----
+
 Install Instructions:
 
 1. Unzip the contents inside the apache folder, for example under /var/www
@@ -43,7 +46,7 @@ Install Instructions:
 7. Labs ready to be used, click on lesson number to open the lesson page.
 8. Enjoy the labs
 
-==========================================================================================
+----
 
 Corrosponding walkthrough video tutorials and explainations can be found at:
 
@@ -53,11 +56,9 @@ Corrosponding walkthrough video tutorials and explainations can be found at:
 
 you can also find the read along book at https://leanpub.com/SQLI-LABS, work is under process.
 
-==========================================================================================
+----
 
 Challenge Section added:
 Less-54 to Less - 61 special challenge lessons added to repository for testing skills learnt from the other Lab lessons.
 
-==========================================================================================
-
-
+----
