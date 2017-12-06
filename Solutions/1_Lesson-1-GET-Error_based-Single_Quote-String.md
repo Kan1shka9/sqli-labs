@@ -1,4 +1,4 @@
-#### 1. Lesson 1
+#### 1. Lesson 1 - ``GET - Error based - Single Quote - String``
 
 ```
 http://127.0.0.1/sqli-labs/Less-1/?id=1
@@ -76,6 +76,8 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 1\
 ```
 
+--
+
 ###### Comments in MySQL
 
 ```
@@ -89,6 +91,8 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 ```
 /* */
 ```
+
+--
 
 ```
 http://localhost/sqli-labs/Less-1/?id=1'--%20
